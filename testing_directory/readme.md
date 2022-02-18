@@ -1,6 +1,12 @@
 
 Some ideas.
 
+I think that we can follow an approach that is similar to UDPIPE, Ixapipes or Stanford CoreNLP.
+
+First we perform single evaluation procedures.
+
+Afterwards, we can do evaluation accross poems.
+
 #### The framework
 
 1.- Poetic features: Conformance of metre
@@ -14,6 +20,8 @@ Ignore/just count-inform/evaluate (In the future, suggest metre)
  When ambiguity is allowed, consider the best case.
 
 1.3.- rhymes:
+https://github.com/sravanareddy/rhymedata
+https://github.com/jvamvas/rhymediscovery
 Rhyme accuracy. E.g.
 
 '''
@@ -65,6 +73,13 @@ accuracy = 1 - (MED(gold,pred)/(max(len(gold),len(pred))))
 
 2.1.- type token ratio, considering only content words + Lexical repetition
 2.2.- Word frequency distribution (Jurafsky and Kao, 2012)
+1.and
+2.the
+3.a
+345.house
+346.window
+...
+Ranking based on the frequency. For a given poem, return the frequency ranking of each word. The lower the number the more unfrequent words they are. If word is not in the dictionary, count.
 2.3.- Topicality as a retrieval problem (multipoetryme, word2vec, doc2vec, BERT)
 2.4.- LDA idea
 
@@ -124,3 +139,10 @@ For instance, English:
 2.-
 
 3.-
+
+#### Ideas for the future
+I think that Rouge is really good to measure the intra novelty.
+If poetry should sound similar, I would expect that a character-level rouge measure would give us a metric
+ of how similar letters/letter n-grams are used. And I would expect some sort of repetition, assuming that
+ alliteration/similar sounds do happen in poetry
+Then, maybe analyzing the ratio between the word-based rouge and the character-based rouge could be a good metric.

@@ -16,7 +16,7 @@ class evaluator(object):
 
         In this program, we consider a sequence of lines without an extra new line to be a stanza (kinda paragraph)
 
-        The program returns the number of stanzas
+        The program returns the number of lines in each stanza as a list of numbers
         """
 
         previous_line = ""
@@ -25,20 +25,29 @@ class evaluator(object):
         else:
             stanzas = 0
 
+        nolines = 0
+        stanzalengths = []
         for line in input_text:
             if line == "" and previous_line != "":
                 stanzas += 1
+                stanzalengths.append(nolines)
+                nolines = 0
+            elif line != "":
+                nolines += 1
             previous_line = line
 
-        return ("No. of stanzas", stanzas)
+        if nolines != 0:
+            stanzalengths.append(nolines)
+
+        return ("linecount", stanzalengths)
 
     @staticmethod
     def evaluate(self, input_text, expected_value):
         result = self.analyze(input_text)
         if expected_value == result:
-            return ("Stanza check", 1)
+            return ("linecheck", 1)
         else:
-            return ("Stanza check", 0)
+            return ("linecheck", 0)
 
 
 if __name__ == '__main__':
@@ -52,3 +61,5 @@ if __name__ == '__main__':
     f.close()
     counter = ev.analyze(lines)
     print (counter)
+
+
