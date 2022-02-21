@@ -24,6 +24,15 @@ The seedwords are the same words used in the Oliveira et al. (2017) paper, apart
 We generated 10 poems for each seed word and for each language.
 
 
+#### API PoeTryMe
+https://drops.dagstuhl.de/opus/volltexte/2017/7946/pdf/OASIcs-SLATE-2017-12.pdf
+
+Further information about PoeTryMe
+"PoeTryMe: a versatile platform for poetry generation"
+"Multilingual extension and evaluation of a poetry generator"
+https://www.sciencedirect.com/science/article/pii/S138904171730311X
+
+
 
 ## Human poetry
 
