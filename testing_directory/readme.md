@@ -20,6 +20,7 @@ Ignore/just count-inform/evaluate (In the future, suggest metre)
  When ambiguity is allowed, consider the best case.
 
 1.3.- rhymes:
+https://github.com/versotym/rhymeTagger
 https://github.com/sravanareddy/rhymedata
 https://github.com/jvamvas/rhymediscovery
 Rhyme accuracy. E.g.
