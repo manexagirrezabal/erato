@@ -1,4 +1,20 @@
 
+### Semantic model evaluation
+
+I tested three different models for computing the similarity between the topics and the poems themselves:
+
+1.- dccuchile/bert-base-spanish-wwm-uncased: 
+Performance measures here: https://github.com/manexagirrezabal/erato/blob/master/testing_directory/semantic_test_poetryme_spanish.txt
+
+2.- hiiamsid/sentence_similarity_spanish_es:
+Performance measures here: https://github.com/manexagirrezabal/erato/blob/master/testing_directory/sentence_similarity_spanishModel-poetrymespanish.txt
+
+3.- sentence-transformers/distiluse-base-multilingual-cased-v1:
+Performance measures here: https://github.com/manexagirrezabal/erato/blob/master/testing_directory/sentence_transformers.txt
+
+
+Further ideas
+
 Some ideas.
 
 I think that we can follow an approach that is similar to UDPIPE, Ixapipes or Stanford CoreNLP.
