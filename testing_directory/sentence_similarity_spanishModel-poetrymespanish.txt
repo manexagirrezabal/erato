@@ -1,0 +1,22 @@
+
+model = SentenceTransformer('hiiamsid/sentence_similarity_spanish_es')
+
+
+              precision    recall  f1-score   support
+
+        amor       0.45      1.00      0.62        10
+  artificial       0.75      0.30      0.43        10
+        azul       0.00      0.00      0.00        10
+      cantar       0.38      1.00      0.56        10
+   construir       0.91      1.00      0.95        10
+      futbol       0.00      0.00      0.00        10
+        leer       0.00      0.00      0.00        10
+       nuevo       1.00      0.90      0.95        10
+   ordenador       0.47      0.90      0.62        10
+    pandemia       0.00      0.00      0.00         7
+      poesía       1.00      1.00      1.00        10
+       virus       0.00      0.00      0.00        10
+
+    accuracy                           0.52       117
+   macro avg       0.41      0.51      0.43       117
+weighted avg       0.42      0.52      0.44       117
