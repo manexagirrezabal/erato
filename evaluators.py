@@ -5,6 +5,8 @@ from importlib import import_module
 import importlib.util
 import sys
 
+from tqdm import tqdm
+
 import pandas as pd
 
 from models import singlemodels,collectionmodels
@@ -99,7 +101,7 @@ class generalCollectionEvaluator(generalSingleEvaluator):
         poetry_evaluator.load_model()
         independent_analyses={}
         independent_texts  ={}
-        for filename in glob.glob(directory+"/*.txt"):
+        for filename in tqdm(glob.glob(directory+"/*.txt")):
             independent_analyses[filename],independent_texts[filename] = poetry_evaluator.analyze_file(filename, output_format="pretty")
         pd.DataFrame(independent_analyses).to_csv("independent_analyses.csv")
         #print (independent_analyses)
