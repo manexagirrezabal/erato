@@ -12,6 +12,9 @@ from sklearn.metrics import classification_report
 
 import sys
 
+#Downloaded topic dataset from https://www.kaggle.com/datasets/michaelarman/poemsdataset
+#Exported it to the right format with
+#python3 format_poemsdataset.py /Users/jbt694/corpusak/poetry/poemsdataset/topics
 
 
 def cosine_similarity(v1, v2):
