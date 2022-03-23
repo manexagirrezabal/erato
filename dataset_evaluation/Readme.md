@@ -42,6 +42,10 @@ In Spanish, we followed the conclusions of Colorado (2015)[1], who created the C
  
 In the case of English, we decided to create a corpus with three authors that have a rather particular style. The authors are William Shakespeare[3], Edgar Allan Poe[4] and Emily Dickinson[5].
 
+https://www.emilydickinsonmuseum.org/emily-dickinson/poetry/tips-for-reading/major-characteristics-of-dickinsons-poetry/
+https://www.gale.com/open-access/edgar-allan-poe
+https://www.bl.uk/works/shakespeares-sonnets
+
 
 [1] https://aclanthology.org/W15-0712.pdf
 [2] https://github.com/bncolorado/CorpusSonetosSigloDeOro
