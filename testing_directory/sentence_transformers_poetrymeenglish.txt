@@ -1,0 +1,19 @@
+              precision    recall  f1-score   support
+
+  artificial       0.77      1.00      0.87        10
+        blue       1.00      0.50      0.67        10
+       build       0.88      0.70      0.78        10
+    computer       0.77      1.00      0.87        10
+    facemask       0.50      0.10      0.17        10
+    football       0.71      1.00      0.83        10
+        love       0.82      0.90      0.86        10
+         new       1.00      0.80      0.89        10
+    pandemic       1.00      1.00      1.00        10
+      poetry       0.50      1.00      0.67        10
+        read       0.86      0.60      0.71        10
+        sing       1.00      0.80      0.89        10
+       virus       0.91      1.00      0.95        10
+
+    accuracy                           0.80       130
+   macro avg       0.82      0.80      0.78       130
+weighted avg       0.82      0.80      0.78       130
