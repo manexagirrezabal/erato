@@ -78,6 +78,17 @@ N-k words that rhyme 1-(k/(N-1))
 if there are zero words (1/N) that rhyme -> 0
 '''
 
+Tested software for rhymes:
+-Dopelearning, rhyme density
+https://github.com/ekQ/raplysaattori.git
+cd /Users/jbt694/project_poetryevaluation/erato/testing_directory/raplysaattori
+/opt/anaconda3/envs/glample/bin/python2.7 raplyzer.py
+This returns us the rhyme density, but this is calculated as multisyllabic assonance, and not proper rhyme
+If we are desperate, we could use that (it returns a number that could be used to compare across different models and
+even with rappers)
+
+
+
 1.4.- stresses
 Following my thesis, inspired by Manurung
 https://www.tandfonline.com/doi/pdf/10.1080/0952813X.2010.539029

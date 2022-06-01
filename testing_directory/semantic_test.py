@@ -8,7 +8,7 @@ import numpy as np
 
 from matplotlib import pyplot as plt
         
-from sklearn.metrics import classification_report
+from sklearn.metrics import classification_report,f1_score
 
 import sys
 
@@ -190,13 +190,13 @@ class evaluator(object):
 
         true_topn = {topic:np.argwhere(topicids==topic).reshape(-1) for topic in topicv}
         
-        plt.imshow(distances)
-        plt.colorbar()
-        plt.show()
-        result=0
+#        plt.imshow(distances)
+#        plt.colorbar()
+#        plt.show()
+        result=f1_score(topics,predicted_topics, average="macro")
         
     
-        return (("acrossnovelty (lbyl, alllines, singlestr)", (result)))
+        return (("f1score semantics", (result)))
 
     @staticmethod
     def evaluate(self, input_text, expected_value):
@@ -222,4 +222,4 @@ if __name__ == '__main__':
 
     
     counter = ev.analyze(texts, topics,topicids,topicidx)
-#    print (counter)
+    print (counter)
