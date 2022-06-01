@@ -3,6 +3,8 @@ from rouge_metric import PyRouge
 import pandas as pd
 import numpy as np
 
+from tqdm import tqdm
+
 import sys
 
 rouge = PyRouge(rouge_n=(1, 2, 3, 4),
@@ -64,7 +66,7 @@ class evaluator(object):
     def _internal_analyze_func (analyses, texts, applied_fun):
         result_lbyl=[]
         poems = list(texts.keys())
-        for poem1idx in poems:
+        for poem1idx in tqdm(poems):
             for poem2idx in poems:
                 if poem1idx != poem2idx:
                     result_lbyl.append(applied_fun(texts[poem1idx],texts[poem2idx]))
