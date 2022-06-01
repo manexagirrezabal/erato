@@ -66,6 +66,9 @@ class generalSingleEvaluator(object):
 
     def analyze_file(self, file:str, output_format="pretty", verbose=None):
         lines = load_file(file)
+        return analyze_lines(self, lines, output_format, verbose)
+
+    def analyze_lines(self, lines, output_format="pretty", verbose=None):
         
         whole_result = []
         for evaluation_feature in self.evaluators.keys():
@@ -96,13 +99,16 @@ class generalCollectionEvaluator(generalSingleEvaluator):
         print ("Load general models:")
         super()._load_model(models=collectionmodels)
 
+    #1 line poems will not get an analysis (rouge doesn't like it, obviously)
     def analyze_collection(self,directory,verbose=None):
         poetry_evaluator = generalSingleEvaluator()
         poetry_evaluator.load_model()
         independent_analyses={}
         independent_texts  ={}
         for filename in tqdm(glob.glob(directory+"/*.txt")):
-            independent_analyses[filename],independent_texts[filename] = poetry_evaluator.analyze_file(filename, output_format="pretty")
+            lines = load_file(filename)
+            if len(lines) > 1:
+                independent_analyses[filename],independent_texts[filename] = poetry_evaluator.analyze_lines(lines, output_format="pretty")
         pd.DataFrame(independent_analyses).to_csv("independent_analyses.csv")
         #print (independent_analyses)
         
