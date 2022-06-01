@@ -1,4 +1,7 @@
 
+### Reminder (MANEX)
+When creating the GPT2 based LM for fluency detection, remove newlines. If we leave the newlines, I think the model will not learn the poetic fluency per se, but it will learn that if there are a number of new lines, that is poetry. Therefore, we should remove new lines.
+
 ### Semantic model evaluation
 
 I tested three different models for computing the similarity between the topics and the poems themselves:
