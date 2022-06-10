@@ -13,7 +13,8 @@ from models import singlemodels,collectionmodels
 
 def load_file(file: str) -> list:
     f = open(file, encoding="utf8")
-    lines = [line.strip() for line in f]
+    whole_text = f.read().strip()
+    lines = [line.strip() for line in whole_text.split("\n")]
     f.close()
     return lines
 
@@ -66,13 +67,14 @@ class generalSingleEvaluator(object):
 
     def analyze_file(self, file:str, output_format="pretty", verbose=None):
         lines = load_file(file)
-        return analyze_lines(self, lines, output_format, verbose)
+        return self.analyze_lines(lines, output_format, verbose)
 
     def analyze_lines(self, lines, output_format="pretty", verbose=None):
         
         whole_result = []
         for evaluation_feature in self.evaluators.keys():
             for evaluator in self.evaluators[evaluation_feature]:
+                print (evaluator)
                 result = evaluator.analyze(lines)
                 if verbose:
                     print (result)
