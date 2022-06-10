@@ -21,7 +21,7 @@ class evaluator(object):
     def __str__(self):
         pass
 
-    @staticmethod
+#    @staticmethod
     def analyze(input_text):
         """
         param input_text: This is the input text we want to analyze

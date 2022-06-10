@@ -7,10 +7,11 @@ from evaluators import generalSingleEvaluator,generalCollectionEvaluator
 # Press ⌃R to execute it or replace it with your code.
 # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
 
-def evaluate_poem(file, modeldir):
+def evaluate_poem(file):
     poetry_evaluator = generalSingleEvaluator()
     poetry_evaluator.load_model()
     result = poetry_evaluator.analyze_file(file, output_format="pretty")  # we can also make it a table as output
+    print (result)
     
 def evaluate_poem_collection(directory):
     poem_collection_evaluator = generalCollectionEvaluator()
@@ -39,7 +40,7 @@ if __name__ == '__main__':
             print (aspect)
             print ("\t",poetry_evaluator.evaluators[aspect])
     elif args.filename:
-        evaluate_poem(args.filename,args.model)
+        evaluate_poem(args.filename)
     elif args.directory:
         evaluate_poem_collection(args.directory)
         
