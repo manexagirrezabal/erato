@@ -37,6 +37,10 @@ class evaluator(object):
                     scores = rouge.evaluate([line1], [[line2]])
                     results.append(((indline1, indline2), scores))
 
+#        print ("RESULT START")
+#        print (len(results))
+#        print (len(results[1]))
+#        print ("RESULT END")
         accumulated_results = pd.DataFrame(results[0][1])
         for results_line in results[1:]:
             accumulated_results += pd.DataFrame(results_line[1])
@@ -54,7 +58,7 @@ class evaluator(object):
 
 
 if __name__ == '__main__':
-    ev = evaluator()
+#    ev = evaluator()
     if len(sys.argv)>1:
         filename = sys.argv[1]
     else:
@@ -62,5 +66,5 @@ if __name__ == '__main__':
     f=open(filename)
     lines=[line.strip() for line in f]
     f.close()
-    counter = ev.analyze(lines)
-    print (counter)
+    resultno, resultdata = evaluator.analyze(lines)
+    print (filename+"\t"+str(list(resultdata.values())))

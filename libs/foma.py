@@ -27,7 +27,7 @@ fomalibpath = find_library('foma')
 if fomalibpath is not None:
   foma = cdll.LoadLibrary(fomalibpath)
 else:
-  foma = cdll.LoadLibrary('/Users/jbt694/project_poetryevaluation/erato/models/eu/poetic_features/libs/libfoma.dylib')
+  foma = cdll.LoadLibrary('/Users/jbt694/project_poetryevaluation/erato/libs/libfoma.dylib')
 
 class FSTstruct(Structure):
 

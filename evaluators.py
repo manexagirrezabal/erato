@@ -74,7 +74,7 @@ class generalSingleEvaluator(object):
         whole_result = []
         for evaluation_feature in self.evaluators.keys():
             for evaluator in self.evaluators[evaluation_feature]:
-                print (evaluator)
+#                print (evaluator)
                 result = evaluator.analyze(lines)
                 if verbose:
                     print (result)

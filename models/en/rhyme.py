@@ -37,7 +37,9 @@ class evaluator(object):
         nolines = len([line for line in input_text if line.strip()!=""])
         
         rhymevocab = set(rhymes)
-        rhymevocab.remove(None)
+        
+        if None in rhymevocab:
+            rhymevocab.remove(None)
 
 #        print ("No. different rhymes", len(set(rhymes)))
 #        print ("Rhyme ratio per no. of lines", norhymes/nolines)

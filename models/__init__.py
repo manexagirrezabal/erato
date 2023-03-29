@@ -6,7 +6,8 @@ singlemodels = {}
 
 singlemodels['poetic_features'] = ["models/lindep/stanzaCounter.py",
                                     "models/lindep/lineCounter.py",
-#                                    "models/eu/syllableCounter.py",
+                                    "models/en/syllableCounter.py",
+                                    "models/en/stressSimple.py",
                                     "models/en/rhyme.py"]
 
 singlemodels['novelty_features'] = ['models/lindep/intraNoveltyRouge.py']
