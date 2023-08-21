@@ -77,7 +77,7 @@ We calculate novelty within a single poem and accross poems, using the ROUGE met
 
 ### Semantic features
 
-### How to add new features
+## How to add new features
 
 # Citation
 If you find Erato useful for your work, please do cite the work. Here you can find the reference:
