@@ -1,0 +1,29 @@
+<script>
+const dropZone = document.getElementById('drop-zone1');
+
+dropZone.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  dropZone.classList.add('highlight');
+});
+
+dropZone.addEventListener('dragleave', () => {
+  dropZone.classList.remove('highlight');
+});
+
+dropZone.addEventListener('drop', (e) => {
+  e.preventDefault();
+  dropZone.classList.remove('highlight');
+  const files = e.dataTransfer.files;
+  for (var i = 0; i < files.length; i++) {
+      console.log(files[i].name);
+      var reader = new FileReader();
+      reader.onload = function(){
+        var text = reader.result;
+        var textarea = document.getElementById("text")
+        textarea.innerHTML = text
+    };
+    reader.readAsText(files[0]);
+    }
+  // do something with the dropped files
+});
+</script>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enhanced Website</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    text-align: center;
+    margin-top: 100px;
+  }
+  textarea {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+  }
+  button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #2980b9;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <textarea id="textInput" placeholder="Enter text" rows="4" cols="50"></textarea><br><br>
+  <button onclick="redirectToAnotherWebsite()">Submit</button>
+</div>
+
+<h4 style="text-align: center;">Please make sure that Erato is running. You can run it with the following command:</h4>
+<h4 style="text-align: center;"><tt>python3 web_demo_single.py</tt></h4>
+
+<script>
+function redirectToAnotherWebsite() {
+
+  function convert(s) {
+    s=s.replaceAll(" ","+");
+    s=s.replaceAll("\n","%0D%0A");
+    return s; 
+  }
+  const inputText = document.getElementById("textInput").value;
+  if (inputText.trim() !== "") {
+    const encodedText = convert(inputText);
+    window.location.href = `http://localhost:8080?text=${encodedText}`;
+  }
+}
+</script>
+</body>
+</html>
