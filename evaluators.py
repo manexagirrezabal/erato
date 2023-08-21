@@ -72,7 +72,7 @@ class generalSingleEvaluator(object):
     def analyze_lines(self, lines, output_format="pretty", verbose=None):
         
         whole_result = []
-        for evaluation_feature in self.evaluators.keys():
+        for evaluation_feature in tqdm(self.evaluators.keys()):
             for evaluator in self.evaluators[evaluation_feature]:
 #                print (evaluator)
                 result = evaluator.analyze(lines)

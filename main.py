@@ -36,9 +36,18 @@ if __name__ == '__main__':
         poetry_evaluator = generalSingleEvaluator()
         poetry_evaluator.load_model()
         print ()
+        print ("Single poem evaluators")
         for aspect in poetry_evaluator.evaluators.keys():
             print (aspect)
             print ("\t",poetry_evaluator.evaluators[aspect])
+
+        poetry_collection_evaluator = generalCollectionEvaluator()
+        poetry_collection_evaluator.load_model()
+        print ()
+        print ("Poem collection evaluators")
+        for aspect in poetry_collection_evaluator.evaluators.keys():
+            print (aspect)
+            print ("\t",poetry_collection_evaluator.evaluators[aspect])
     elif args.filename:
         evaluate_poem(args.filename)
     elif args.directory:
