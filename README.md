@@ -52,9 +52,10 @@ If you prefer to use Erato as a simple way to evaluate poems and you want to avo
 
 `python3 web_demo_single_simplified.py`
 
-Once that this command is running (make sure that you can read "Server started http://localhost:8080" at the terminal), then there are two ways for using it:
+Once that this command is running (make sure that you can read `Server started http://localhost:8080` at the terminal), then there are two ways for using it:
 
  1.- Open the file called erato_gpt3.html, paste the poem there and press submit
+ 
  2.- Open the web browser and navigate to the address "http://localhost:8080/". Paste the poem in the text area or drag a text file to the draggable area, and after that, press submit.
  
 After that, results will be shown in the right column.
