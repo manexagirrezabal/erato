@@ -123,8 +123,9 @@ class evaluator(object):
         topicv=list(sorted(idx2topic.keys()))
         distances = np.zeros((len(texts),len(topicv)))
         for indtext,text in enumerate(texts):
+            textrep = get_representation(text)
             for indtopic,topic in enumerate(topicv):
-                textrep = get_representation(text)
+                
                 topicrep = get_representation(idx2topic[topic])
 
                 #Instead of encoding the whole poem as such,
