@@ -7,6 +7,8 @@
 import sys
 import glob
 
+import re
+
 from rhymetagger import RhymeTagger
 
 rt = RhymeTagger()
@@ -31,7 +33,9 @@ class evaluator(object):
         We call an ending a rhyme if it is repeated across the work. If a line does not rhyme with any other line it will not be counted as a rhyming line.
         """
         
-        rhymes = rt.tag(input_text, output_format=3) 
+        clean_text = [re.sub("[^a-zA-Z\ \']", "", text) for text in input_text]
+
+        rhymes = rt.tag(clean_text, output_format=3) 
 
         norhymes = len([rhyme for rhyme in rhymes if rhyme is not None])
         nolines = len([line for line in input_text if line.strip()!=""])
