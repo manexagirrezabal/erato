@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enhanced Erato</title>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .column {
+    flex: 50%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .column.left {
+    background-color: #f2f2f2;
+  }
+
+  .column.right {
+    background-color: #fafafa;
+    align-items: center;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .drop-zone {
+    width: 200px;
+    height: 200px;
+    border: 2px dashed #ccc;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+    margin: 20px 0;
+  }
+
+  input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #2980b9;
+  }
+
+  textarea {
+    width: 100%;
+    height: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+  }
+</style>
+</head>
+
+
+<body>
+<div class="row"><div class="column" style="background-color:#aaa;">
+  <form action="./">
+    <p>Please write a poem that you want to analyze and press the submit button below to analyze</p>
+
+##########
+<!--    <textarea rows='20' cols='60' id="text" name="text">Please write a poem here</textarea>-->
+    <br/>
+    <div class="drop-zone" id="drop-zone1">Drop files here and the content will be put in the text area</div>
+    <div class="drop-zone" id="drop-zone2">Drop files here and the content will be put in the text area</div>
+    <div class="drop-zone" id="drop-zone3">Drop files here and the content will be put in the text area</div>
+    <input type="submit" method="post" value="Submit">
+  </form>
+
+  </div><div id="resultContainer" class="column" style="background-color:#eee;">
+
+
+##########
+
+</div>
+
+<script>
+const dropZone = document.getElementById('drop-zone1');
+
+
+dropZone.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  dropZone.classList.add('highlight');
+});
+
+dropZone.addEventListener('dragleave', () => {
+  dropZone.classList.remove('highlight');
+});
+
+dropZone.addEventListener('drop', (e) => {
+  e.preventDefault();
+  dropZone.classList.remove('highlight');
+  const files = e.dataTransfer.files;
+  for (var i = 0; i < files.length; i++) {
+      console.log(files[i].name);
+      var reader = new FileReader();
+      reader.onload = function(){
+        var text = reader.result;
+        var textarea = document.getElementById("text")
+
+        newP = document.createElement("p");
+        newP.append(text);
+
+        textarea.append(newP);
+    };
+    reader.readAsText(files[0]);
+    }
+  // do something with the dropped files
+});
+
+
+</script>
+
+</body>
+</html>
