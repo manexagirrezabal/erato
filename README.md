@@ -75,7 +75,8 @@ We include the following metrics:
 ### Novelty features
 We calculate novelty within a single poem and accross poems, using the ROUGE metric.
 
-### Semantic features
+### Lexico Semantic features
+Type Token ratio
 
 ## How to add new features
 
