@@ -99,7 +99,7 @@ class evaluator(object):
 
         
     
-        return (("acrossnovelty (lbyl, alllines, singlestr)", (lbyl, alllines, singlestr)))
+        return (("acrossnovelty (lbyl, alllines, singlestr)", (lbyl.tolist(), alllines.tolist(), singlestr.tolist())))
 
     @staticmethod
     def evaluate(self, input_text, expected_value):
