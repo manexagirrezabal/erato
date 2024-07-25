@@ -34,10 +34,10 @@ def conv(cell):
     return np.array(cell[1:-1].split(","),dtype=float)
 
 
-intrasoai = pd.read_csv("models/lindep/openai_eng_all_intras.tsv",sep="\t", header=None)
-intraoaivalues = intrasoai.loc[:,1].map(conv)
-intrasptm = pd.read_csv("models/lindep/poetryme_eng_all_intras.tsv",sep="\t", header=None)
-intraptmvalues = intrasptm.loc[:,1].map(conv)
+#intrasoai = pd.read_csv("models/lindep/openai_eng_all_intras.tsv",sep="\t", header=None)
+#intraoaivalues = intrasoai.loc[:,1].map(conv)
+#intrasptm = pd.read_csv("models/lindep/poetryme_eng_all_intras.tsv",sep="\t", header=None)
+#intraptmvalues = intrasptm.loc[:,1].map(conv)
 
 def plot_openai():
     for values in intraoaivalues:
@@ -73,7 +73,8 @@ def print_cute(data, data_type):
             return 0
         toplot = [sum([get_stress(line,syllno) for stanza in data for line in stanza]) for syllno in range(max_sylls)]
 
-        plt.subplot(3,1,subplot_idx)
+        plt.subplot(5,1,subplot_idx)
+        plt.title("Stresses")
         plt.plot(toplot)
         subplot_idx=subplot_idx+1
 
@@ -100,7 +101,8 @@ def print_cute(data, data_type):
 
     elif data_type == "No. of syllables per line":
 
-        plt.subplot(3,1,subplot_idx)
+        plt.subplot(5,1,subplot_idx)
+        plt.title("No. of syllables per line")
         plt.boxplot(data)
         subplot_idx=subplot_idx+1
 
@@ -111,10 +113,10 @@ def print_cute(data, data_type):
         str_return+= "Rhyme richness is "+("%.3f" % data['rhymerichness'])
         return str_return
     elif data_type == "intranovelty":
-        plt.subplot(3,1,subplot_idx)
+        plt.subplot(5,1,subplot_idx)
         print (data.values())
 #        print ("Plotting")
-        
+        plt.title("Internal novelty")
         plt.plot([0.03297652394291049, 0.001221001221001221, 0.0, 0.0, 0.0316836991206739, 0.008679643908673046], color="red", alpha=0.7, label="Sonnet no.18")
         plt.plot([0.03180682529422025, 0.0030642434488588337, 0.0, 0.0, 0.03180682529422025, 0.008976563837231754],color="red",alpha=0.7, label="Sonnet no. 1")
 #        plot_openai()
@@ -124,6 +126,28 @@ def print_cute(data, data_type):
         plt.legend()
         subplot_idx=subplot_idx+1
         return ""
+    elif data_type == "sentiment":
+        #This model returns three values:
+          #{'POS':val, 'NEG':val, 'NEU':val} -> SENTIMENT FOR THE POEM
+          #A list of sentiments per line
+          #A list of sentiments per stanza
+          str_return = "Positive: {:.3f}".format(data[0]["POS"])+"\n"
+          str_return += "Negative: {:.3f}".format(data[0]["NEG"])+"\n"
+          str_return += "Neutral: {:.3f}".format(data[0]["NEU"])+"\n"
+
+          plt.subplot(5,1,subplot_idx)
+          plt.title("Per line sentiment")
+          plt.plot ([[line['POS'],line['NEG'],line['NEU']] for line in data[1]], label=["POS","NEG","NEU"])
+          plt.legend()
+          subplot_idx=subplot_idx+1
+
+          plt.subplot(5,1,subplot_idx)
+          plt.title("Per stanza sentiment")
+          plt.plot ([[line['POS'],line['NEG'],line['NEU']] for line in data[2]], label=["POS","NEG","NEU"])
+          plt.legend()
+          subplot_idx=subplot_idx+1
+
+          return str_return
     else:
         return str(data_type) + " " + str(data)
 
@@ -166,7 +190,7 @@ class MyServer(BaseHTTPRequestHandler):
 
 
         plt.clf()
-        plt.subplots(nrows=3)
+        plt.subplots(nrows=5,figsize=(8,15))
         subplot_idx=1
         for el in result.keys():
             self.wfile.write(bytes("<label>"+print_cute(result[el],el)+"</label>", "utf-8"))
