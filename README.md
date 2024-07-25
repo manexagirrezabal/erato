@@ -76,7 +76,8 @@ We include the following metrics:
 We calculate novelty within a single poem and accross poems, using the ROUGE metric.
 
 ### Lexico Semantic features
-Type Token ratio
+ - Type Token ratio
+ - Sentiment analysis (Pérez et al., 2023) based on [pysentimiento](https://github.com/pysentimiento/pysentimiento)
 
 ## How to add new features
 
