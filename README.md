@@ -88,6 +88,7 @@ If you find Erato useful for your work, please do cite the work. Here you can fi
 
 # References
  - Gonçalo Oliveira, H., Hervás, R., Díaz, A., & Gervás, P. (2017). Multilingual extension and evaluation of a poetry generator. Natural Language Engineering, 23(6), 929-967.
+ - Perez, J. M., Rajngewerc, M., Giudici, J. C., Furman, D. A., Luque, F., Alemany, L. A., & Martínez, M. V. (2023). pysentimiento: A Python Toolkit for Opinion Mining and Social NLP tasks.
  - Plecháč, P. (2018). A collocation-driven method of discovering rhymes (in Czech, English, and French poetry). Taming the Corpus: From Inflection and Lexis to Interpretation, 79-95.
 
 # Contact
