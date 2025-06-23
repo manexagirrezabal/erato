@@ -11,6 +11,8 @@ import pandas as pd
 
 from models import singlemodels,collectionmodels
 
+verbositylevel = 0
+
 def load_file(file: str) -> list:
     f = open(file, encoding="utf8")
     whole_text = f.read().strip()
@@ -48,7 +50,8 @@ class generalSingleEvaluator(object):
     def _load_model(self,models=singlemodels):
         for aspect in models:
             for filename in models[aspect]:
-                print ("Loading the file >"+filename)
+                if verbositylevel==1:
+                    print ("Loading the file >"+filename)
 
                 module_name = filename.split("/")[-1]
 
@@ -60,7 +63,8 @@ class generalSingleEvaluator(object):
                 self.evaluators[aspect].append(module.evaluator)
 
     def load_model(self, models=singlemodels):
-        print ("Load single poem analyzers")
+        if verbositylevel==1:
+            print ("Load single poem analyzers")
         self._load_model(models)
         
 
@@ -98,7 +102,8 @@ class generalCollectionEvaluator(generalSingleEvaluator):
         pass
 
     def load_model(self):
-        print ("Load general models:")
+        if verbositylevel==1:
+            print ("Load general models:")
         super()._load_model(models=collectionmodels)
 
     #1 line poems will not get an analysis (rouge doesn't like it, obviously)
@@ -108,6 +113,32 @@ class generalCollectionEvaluator(generalSingleEvaluator):
         independent_analyses={}
         independent_texts  ={}
         for filename in tqdm(glob.glob(directory+"/*.txt")):
+            lines = load_file(filename)
+            if len(lines) > 1:
+                independent_analyses[filename],independent_texts[filename] = poetry_evaluator.analyze_lines(lines, output_format="pretty")
+        pd.DataFrame(independent_analyses).to_csv("independent_analyses.csv")
+        #print (independent_analyses)
+        
+        
+        #Now the general evaluator comes into play
+        final_result = []
+        for evaluation_feature in self.evaluators.keys():
+            for evaluator in self.evaluators[evaluation_feature]:
+                local_result = evaluator.analyze(independent_analyses,independent_texts)
+                if verbose:
+                    print (local_result)
+                final_result.append(local_result)
+        final_result_dict = {el[0]:el[1] for el in final_result}
+        #print (final_result_dict)
+        
+        return independent_analyses, final_result_dict
+
+    def analyze_filelist(self,filelist,verbose=None):
+        poetry_evaluator = generalSingleEvaluator()
+        poetry_evaluator.load_model()
+        independent_analyses={}
+        independent_texts  ={}
+        for filename in tqdm(filelist):
             lines = load_file(filename)
             if len(lines) > 1:
                 independent_analyses[filename],independent_texts[filename] = poetry_evaluator.analyze_lines(lines, output_format="pretty")
