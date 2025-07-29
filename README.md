@@ -86,6 +86,8 @@ If you find Erato useful for your work, please do cite the work. Here you can fi
 
  - Agirrezabal, M., Gonçalo Oliveira, H., Ormazabal, A. (2023) Erato: Automatizing Poetry Evaluation, Proceedings of the Portuguese Conference on Artificial Intelligence (EPIA 2023)
 
+You can read the full paper [here](https://arxiv.org/abs/2310.20326).
+
 # References
  - Gonçalo Oliveira, H., Hervás, R., Díaz, A., & Gervás, P. (2017). Multilingual extension and evaluation of a poetry generator. Natural Language Engineering, 23(6), 929-967.
  - Perez, J. M., Rajngewerc, M., Giudici, J. C., Furman, D. A., Luque, F., Alemany, L. A., & Martínez, M. V. (2023). pysentimiento: A Python Toolkit for Opinion Mining and Social NLP tasks.
